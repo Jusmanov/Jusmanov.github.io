@@ -1303,6 +1303,7 @@ section h2 {
   flex-direction: column;
   padding: 120px 120px;
   width: 100%;
+  max-width: 1920px;
   text-align: left;
   justify-content: center;
   align-items: center;
@@ -1320,7 +1321,6 @@ section h2 {
   padding-top: 0px;
   margin-top: 0px;
   margin-bottom: 0;
-  max-width: 50%;
   font-weight: 600;
 }
 
@@ -1338,18 +1338,22 @@ section h2 {
 }
 
 .content-grid{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
-  max-width: 1920px;
   width: 100%;
+  max-width: 1440px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-align: left;
+  align-items: center;
+  margin: 0 auto;
   padding: 0px 220px;
 }
 
 .content-grid img{
-  max-width: 300px;
+  max-width: 400px;
+  height: auto;
+  margin-left: 200px;
+  margin-top: 30px;
 }
 
 .stats h4, p{
@@ -1372,6 +1376,7 @@ section h2 {
 
 .indiv-stat p{
   font-weight: 600;
+  max-width: 100%;
 }
 
 .network h2::after {
