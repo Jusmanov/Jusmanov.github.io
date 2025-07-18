@@ -1251,7 +1251,6 @@ section h2 {
   max-width: 60%;
 }
 
-.
 
 .company-grid{
   display: grid;
@@ -1344,7 +1343,7 @@ section h2 {
   gap: 20px;
   align-items: center;
   justify-content: center;
-  max-width: 1440px;
+  max-width: 1920px;
   width: 100%;
   padding: 0px 220px;
 }
