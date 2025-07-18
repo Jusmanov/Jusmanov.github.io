@@ -12,14 +12,13 @@
   });
 </script>
 
-
 <script>
 function sendEmail(event) {
     event.preventDefault();
 
     const fullName = document.getElementById("fullName").value;
     const email = document.getElementById("email").value;
-    const company = document.getElementById("company").value;
+    const company = document.getElementById("company").value || "N/A";
     const service = document.getElementById("service").value;
     const shipmentDetails = document.getElementById("shipmentDetails").value;
 
@@ -32,6 +31,6 @@ function sendEmail(event) {
         `Shipment Details:\n${shipmentDetails}`
     );
 
-    window.location.href = `mailto:dispatch@baysunllc.com subject=${subject}&body=${body}`;
+    window.location.href = `mailto:dispatch@baysunllc.com?subject=${subject}&body=${body}`;
 }
 </script>
