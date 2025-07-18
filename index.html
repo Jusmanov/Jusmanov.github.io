@@ -522,6 +522,32 @@
         // Auto-slide testimonials
         setInterval(nextTestimonial, 7000); // Change testimonial every 7 seconds
 
+        function openGmail() {
+  const fullName = document.getElementById("fullName").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const company = document.getElementById("company").value.trim() || "N/A";
+  const service = document.getElementById("service").value;
+  const shipmentDetails = document.getElementById("shipmentDetails").value.trim();
+
+  if (!fullName || !email || !service || !shipmentDetails) {
+    alert("Please fill out all required fields.");
+    return;
+  }
+
+  const subject = encodeURIComponent(`Shipping Quote Request from ${fullName}`);
+  const body = encodeURIComponent(
+    `Full Name: ${fullName}\n` +
+    `Email: ${email}\n` +
+    `Company: ${company}\n` +
+    `Service: ${service}\n\n` +
+    `Shipment Details:\n${shipmentDetails}`
+  );
+
+  const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=dispatch@baysunllc.com&su=${subject}&body=${body}`;
+
+  // Open Gmail in a new tab
+  window.open(gmailLink, "_blank");
+}
 
     </script>
 
