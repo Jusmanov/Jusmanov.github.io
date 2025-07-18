@@ -411,7 +411,7 @@ p {
 
 /* Section Layouts */
 section {
-    padding: 100px 0;
+    padding: 120px 100px;
     position: relative;
     z-index: 1; /* For elements to appear above dotted background */
 }
@@ -496,7 +496,7 @@ section h2 {
 .why-choose-us .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 30px;
+    gap: 25px;
 }
 .why-choose-us .features-grid div {
     background: white;
@@ -793,6 +793,7 @@ section h2 {
     background-color: var(--secondary-color);
     color: white;
     padding: 100px 0;
+  text-align: left;
 }
 .contact-form h2 {
     color: white;
@@ -804,9 +805,8 @@ section h2 {
 .contact-form .form-intro {
     font-size: 1.1rem;
     color: rgba(255,255,255,0.8);
-    text-align: center;
+    text-align: left;
     margin-bottom: 50px;
-    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -1078,7 +1078,7 @@ section h2 {
     .footer-columns {
         flex-direction: column;
         align-items: center;
-        text-align: center;
+        text-align: left;
     }
     .footer-columns > div {
         min-width: unset;
@@ -1087,7 +1087,6 @@ section h2 {
     }
     .footer-columns h4::after {
         left: 50%;
-        transform: translateX(-50%);
     }
     .social-links {
         justify-content: center;
@@ -1202,15 +1201,14 @@ section h2 {
 }
 
 .features-text{
-  width: 400px;
   height: 40vh;
   display: block;
-  padding: 0px 50px;
 }
 
 .broad-grid{
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 30px;
 }
 
 .features-text h3{
@@ -1304,10 +1302,11 @@ section h2 {
 .network{
   display: flex;
   flex-direction: column;
-  padding: 0px 180px;
+  padding: 120px 120px;
   width: 100%;
-  max-width: 1440px;
   text-align: left;
+  justify-content: center;
+  align-items: center;
 }
 
 .network h3, h2, p, h2::after {
@@ -1323,36 +1322,39 @@ section h2 {
   margin-top: 0px;
   margin-bottom: 0;
   max-width: 50%;
+  font-weight: 600;
 }
 
 .network h3{
   font-size: .92rem;
-  padding-bottom: 0px;
+  padding-bottom: 8px;
   margin-top: 0;
   padding-top: 0;
   color: #fc9f47;
 }
 
 .network h2{
-  padding-bottom: 10px;
+  padding-bottom: 15px;
   margin: 0 0;
 }
 
 .content-grid{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 50px;
+  gap: 20px;
   align-items: center;
+  justify-content: center;
+  max-width: 1440px;
+  width: 100%;
+  padding: 0px 220px;
 }
 
 .content-grid img{
-  max-width: 400px;
-  height: auto;
+  max-width: 300px;
 }
 
 .stats h4, p{
   margin: 0;
-  padding: 0;
 }
 
 .stats{
@@ -1381,4 +1383,18 @@ section h2 {
   justify-content: left;
   align-items: left;
   display: flex;
+}
+
+.why-choose-us {
+  padding: 110px 0px;
+}
+
+.top-text{
+  width: 100%;
+  max-width: 1440px;
+  justify-content: center;
+  text-align: left;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0px 220px;
 }
