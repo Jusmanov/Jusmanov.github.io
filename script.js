@@ -1,5 +1,5 @@
 function sendEmail(event) {
-    event.preventDefault();
+    event.preventDefault(); // Stop form from submitting
 
     const fullName = document.getElementById("fullName").value;
     const email = document.getElementById("email").value;
@@ -18,5 +18,5 @@ function sendEmail(event) {
 
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=dispatch@baysunllc.com&su=${subject}&body=${body}`;
 
-    window.open(gmailUrl, '_blank');
+    window.open(gmailUrl, '_blank'); // Open Gmail in new tab
 }
