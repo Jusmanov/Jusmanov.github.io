@@ -57,11 +57,11 @@
         </div>
     </section>
   
-      <section class="why-choose-us dotted-background animate-fade-up" id="why-us">
+      <section class="why-choose-us dotted-background animate-fade animated" data-animate = "fade-in-right" data-delay = "0.3" id="why-us">
         <div class="container">
           
           <div class = "broad-grid animate-fade-up">
-            <div class = "features-text animate-fade-up">
+            <div class = "features-text animate-fade" data-animate="fade-in-right" data-delay="0.65">
               <h3>Expertise</h3>
             <h2>Why Choose Baysun?</h2>
             <p>Baysun LLC has the infrastructure, power, and logistical network needed for precise, high-performance logistics. An extensive network, digital tracking technology, and a highly-skilled team guarantees proper handling of shipments with excellent speed and reliability. Baysun is among the best in logistical strategy and moving high volume.</p>
@@ -73,17 +73,17 @@
                     <h3>Time-Critical Delivery</h3>
                     <p>We specialize in expedited freight, ensuring your urgent shipments arrive on schedule, every time.</p>
                 </div>
-                <div data-animate="zoom-in" data-delay="0.1">
+                <div data-animate="zoom-in" data-delay="0.3">
                     <i class="fas fa-shield-alt feature-icon"></i>
                     <h3>Uncompromising Safety</h3>
                     <p>Our commitment to safety is paramount, with rigorous training and maintenance for an incident-free record.</p>
                 </div>
-                <div data-animate="zoom-in" data-delay="0.2">
+                <div data-animate="zoom-in" data-delay="0.45">
                     <i class="fas fa-chart-line feature-icon"></i>
                     <h3>Transparent Tracking</h3>
                     <p>Real-time GPS tracking and dedicated dispatch ensure you're always informed about your cargo's status.</p>
                 </div>
-                <div data-animate="zoom-in" data-delay="0.3">
+                <div data-animate="zoom-in" data-delay="0.2">
                     <i class="fas fa-hands-helping feature-icon"></i>
                     <h3>Dedicated Support</h3>
                     <p>Our 24/7 client support team is always ready to assist, providing personalized service you can rely on.</p>
@@ -120,10 +120,12 @@
             </div>
         </div>
     </section>
-  <section class = "network dotted-background">
-    <h3>Geographic Network</h3>
-    <h2>Baysun is everywhere</h3>
-    <p>Companies working with Baysun know that we move freight throughout the entirety of the continental United States. With a vast logistical network and up-to-date technology, Baysun has traversed every contiguous US state and several major cities.</p>
+  <section class = "network dotted-background animate-slide-up" id = "network-info">
+    <div class = "top-text">
+       <h3>Geographic Network</h3>
+      <h2>Baysun is everywhere</h3>
+      <p>Companies working with Baysun know that we move freight throughout the entirety of the continental United States. With a vast logistical network and up-to-date technology, Baysun has traversed every contiguous US state and several major cities.</p>
+    </div>
     <div class = "content-grid">
       <div class = "stats">
         <div class = "indiv-stat">
@@ -138,7 +140,7 @@
           <h4>USA-Based</h4>
         </div>
       </div>
-      <div class = "map"><img src = "https://png.pngtree.com/png-vector/20220402/ourmid/pngtree-low-poly-map-of-usa-business-urban-silhouette-vector-png-image_26443660.png"></div>
+      <div class = "map animate-slide-up"><img src = "https://openclipart.org/image/800px/308041"></div>
     </div>
   </section>
 
@@ -159,7 +161,7 @@
                     <strong>All States</strong><span>Nationwide Coverage</span>
                 </div>
                 <div data-animate="fade-in-up" data-delay="0.4">
-                    <strong>95K+</strong><span>MCS 150 Mileage</span>
+                    <strong>965K+</strong><span>MCS 150 Mileage</span>
                 </div>
                 <div data-animate="fade-in-up" data-delay="0.5">
                     <strong>24/7</strong><span>Dispatch & Support</span>
@@ -291,7 +293,7 @@
         <div class="container">
             <h2>Connect With Baysun: Get a Quote Today</h2>
             <p class="form-intro animate-fade-in">Tell us about your shipping needs.</p>
-            <form data-animate="fade-in-up">
+            <form data-animate="fade-in-up" onsubmit="sendEmail(event)">
                 <div class="form-group">
                     <input type="text" id="fullName" placeholder="Full Name" required>
                 </div>
@@ -321,12 +323,12 @@
         <div class="container">
             <div class="footer-columns">
                 <div class="footer-about">
-                    <h4>Baysun Logistics<span class="logo-dot">.</span></h4>
+                    <h4>Baysun LLC<span class="logo-dot">.</span></h4>
                     <p>Precision freight/ Built for volume. Tuned for time. Your trusted partner in logistics excellence.</p>
                     <div class="social-links">
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/baysunllc/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Google"><i class="fab fa-google"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -341,13 +343,13 @@
                 </div>
                 <div class="footer-contact">
                     <h4>Contact Us</h4>
-                    <p><i class="fas fa-phone-alt"></i> (XXX) XXX-XXXX</p>
-                    <p><i class="fas fa-envelope"></i> info@baysunlogistics.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Logistics Drive, Suite 100, Anytown, USA</p>
+                    <p><i class="fas fa-phone-alt"></i>336-890-6434</p>
+                    <p><i class="fas fa-envelope"></i> dispatch@baysunllc.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i>11837 Royal Castle CT, Charlotte NC 28277</p>
                 </div>
             </div>
             <div class="footer-meta">
-                <p>&copy; 2025 Baysun Logistics. All rights reserved. | FMCSA: 123456 | DOT: 654321 | <a href="#">Privacy Policy</a></p>
+                <p>&copy; 2025 Baysun LLC. All rights reserved.  | DOT: 3386803 | <a href="#">Privacy Policy</a></p>
             </div>
         </div>
     </footer>
