@@ -1,18 +1,3 @@
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animated');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('[data-animate]').forEach(el => {
-    observer.observe(el);
-  });
-</script>
-
-<script>
 function sendEmail(event) {
     event.preventDefault();
 
@@ -31,6 +16,7 @@ function sendEmail(event) {
         `Shipment Details:\n${shipmentDetails}`
     );
 
-    window.location.href = `mailto:dispatch@baysunllc.com?subject=${subject}&body=${body}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=dispatch@baysunllc.com&su=${subject}&body=${body}`;
+
+    window.open(gmailUrl, '_blank');
 }
-</script>
