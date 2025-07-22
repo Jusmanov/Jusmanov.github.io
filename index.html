@@ -120,7 +120,7 @@
             </div>
         </div>
     </section>
-  <section class = "network dotted-background animate-slide-up" id = "network-info">
+  <section class = "network dotted-background animate-slide-up" id = "network-info" data-animate="fade-in-left">
     <div class = "top-text">
        <h3>Geographic Network</h3>
       <h2>Baysun is everywhere</h3>
@@ -307,15 +307,14 @@
                     <select id="service" required>
                         <option value="">Select Service Needed*</option>
                         <option value="ftl">Full Truckload (FTL)</option>
+                        <option value="parcel">Parcel/Expedited</option>
                         <option value="other">Other</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <textarea id="shipmentDetails" rows="6" placeholder="Describe your shipment details (e.g., origin, destination, cargo type, dimensions, weight, urgency...)" required></textarea>
                 </div>
-                <button type="button" onclick="openGmail()" class="btn-primary form-submit-btn">
-  Submit Request <i class="fas fa-paper-plane"></i>
-</button>
+                <button type="submit" class="btn-primary form-submit-btn">Submit Request <i class="fas fa-paper-plane"></i></button>
             </form>
         </div>
     </section>
@@ -524,32 +523,6 @@
         // Auto-slide testimonials
         setInterval(nextTestimonial, 7000); // Change testimonial every 7 seconds
 
-        function openGmail() {
-  const fullName = document.getElementById("fullName").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const company = document.getElementById("company").value.trim() || "N/A";
-  const service = document.getElementById("service").value;
-  const shipmentDetails = document.getElementById("shipmentDetails").value.trim();
-
-  if (!fullName || !email || !service || !shipmentDetails) {
-    alert("Please fill out all required fields.");
-    return;
-  }
-
-  const subject = encodeURIComponent(`Shipping Quote Request from ${fullName}`);
-  const body = encodeURIComponent(
-    `Full Name: ${fullName}\n` +
-    `Email: ${email}\n` +
-    `Company: ${company}\n` +
-    `Service: ${service}\n\n` +
-    `Shipment Details:\n${shipmentDetails}`
-  );
-
-  const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=dispatch@baysunllc.com&su=${subject}&body=${body}`;
-
-  // Open Gmail in a new tab
-  window.open(gmailLink, "_blank");
-}
 
     </script>
 
