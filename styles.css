@@ -2348,7 +2348,16 @@ section h2 {
     }
     .hero-text {
         order: 2; /* Text below image on mobile */
+      margin: auto;
+      justify-content: center;
+      text-align: center;
     }
+  
+  .subtitle{
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+  }
     .hero-graphic {
         order: 1; /* Image above text on mobile */
         margin-bottom: 40px;
@@ -2402,6 +2411,10 @@ section h2 {
     }
     .hero .subtitle {
         font-size: 1rem;
+      text-align: center;
+      justify-content: center;
+      margin: auto;
+      padding: auto;
     }
     .section-quote {
         font-size: 1.1rem;
@@ -2595,7 +2608,7 @@ section h2 {
 }
 
 .network{
-  padding: 0px 180px;
+  padding: 0px 220px;
 }
 
 .network h3, h2, p, h2::after {
@@ -2629,11 +2642,21 @@ section h2 {
 .content-grid{
   display: flex;
   flex-direction: row;
-  width: auto;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .content-grid img{
-  max-width: 300px;
+  max-width: 400px;
+}
+
+.top-text{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 40px;
 }
 
 .stats h4, p{
@@ -2684,34 +2707,40 @@ section h2 {
 @media (max-width: 550px){
   .network{
     padding: 10px;
+    align-items: center;
+  }
+  
+  .network p{
+    font-size: 0.65rem;
+  }
+  
+  .network h4{
+    font-size: 0.73rem;
+  }
+  
+  .network img{
+    width: 200px;
+  }
+  
+  .content-grid{
+    align-items: center;
+    gap: 20px;
   }
 }
 
 
- @media (max-width: 400px) {
-   .content-grid img{
-     width: 200px;
-     height: auto;
-   }
-   
-   .network{
-     padding: 0px 15px;
-   }
-   
-   .top-text p{
-     font-size: 0.8rem;
-   }
-   
-   .content-grid{
-      align-items: center;
-   }
-   
-   .content-grid p{
-     font-size: 0.8rem;
-     max-width: 60%;
-   }
-   
-   .content-grid h4{
-     font-size: 1.1rem;
-   }
+@media (min-width: 550px) and (max-width: 740px){
+  .network{
+    padding: 50px;
+    align-items: center;
+  }
+  
+  .content-grid{
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .network img{
+    width: 300px;
+  }
 }
