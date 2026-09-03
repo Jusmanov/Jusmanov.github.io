@@ -12,13 +12,123 @@
 <main>
 <section class="career-hero section--dark"><div class="hero__grid"></div><div class="shell career-hero__content reveal"><div class="eyebrow eyebrow--light"><span></span> Driver careers</div><h1>Drive with a carrier that knows your name.</h1><p>Join a growing Charlotte-based interstate fleet with direct access to dispatch and a straightforward application process.</p><a class="button button--light" href="#apply">Start application <span>↓</span></a></div></section>
 <section class="section"><div class="shell split-heading reveal"><div><div class="eyebrow"><span></span> What to expect</div><h2>A professional recruiting experience.</h2></div><p>This page is designed to be the permanent recruiting destination for Baysun. Compensation, home-time, equipment, minimum-experience, and hiring-lane details should be added only after management confirms the current offer.</p></div><div class="shell cards cards--3 reveal"><article class="card"><div class="card__number">01</div><h3>Direct application</h3><p>No redirect to a generic job board. Applicants enter the core information Baysun needs to screen them.</p></article><article class="card"><div class="card__number">02</div><h3>Fast qualification</h3><p>Capture CDL class, experience, endorsements, accident history, location, and preferred start date in one workflow.</p></article><article class="card"><div class="card__number">03</div><h3>Human follow-up</h3><p>Applications should route to a recruiting inbox or ATS so a real team member can review and respond.</p></article></div></section>
-<section class="section section--soft" id="apply"><div class="shell application"><div class="application__intro reveal"><div class="eyebrow"><span></span> Application</div><h2>Driver application</h2><p>This is the front-end application shell. Connect its endpoint before launch. Do not collect SSNs, medical records, or other highly sensitive documents through a basic web form.</p><div class="application__steps"><span class="is-current">1 Contact</span><span>2 Experience</span><span>3 Driving</span></div></div>
-<form class="form form--application reveal" data-form="driver" action="https://formspree.io/f/REPLACE_ME" method="POST">
-<input type="hidden" name="form_type" value="driver_application">
-<fieldset><legend>Contact information</legend><div class="form__row"><label>First name<input name="first_name" autocomplete="given-name" required></label><label>Last name<input name="last_name" autocomplete="family-name" required></label></div><div class="form__row"><label>Email<input type="email" name="email" autocomplete="email" required></label><label>Phone<input type="tel" name="phone" autocomplete="tel" required></label></div><div class="form__row"><label>City<input name="city" autocomplete="address-level2" required></label><label>State<input name="state" autocomplete="address-level1" maxlength="2" placeholder="NC" required></label></div></fieldset>
-<fieldset><legend>License & experience</legend><div class="form__row"><label>CDL class<select name="cdl_class" required><option value="">Select</option><option>Class A</option><option>Class B</option><option>Other</option></select></label><label>Years of CDL experience<input type="number" name="experience_years" min="0" max="60" required></label></div><div class="form__row"><label>License state<input name="license_state" maxlength="2" placeholder="NC" required></label><label>Endorsements<input name="endorsements" placeholder="None, Hazmat, Tanker…"></label></div><label>Most recent carrier<input name="recent_carrier"></label></fieldset>
-<fieldset><legend>Driving background</legend><div class="form__row"><label>Preventable accidents in last 3 years<select name="accidents_3yr" required><option value="">Select</option><option>0</option><option>1</option><option>2+</option></select></label><label>Moving violations in last 3 years<select name="violations_3yr" required><option value="">Select</option><option>0</option><option>1</option><option>2+</option></select></label></div><label>Anything else we should know?<textarea name="notes" rows="4" placeholder="Schedule, preferred lanes, availability, questions…"></textarea></label><label class="checkbox"><input type="checkbox" name="consent" required><span>I certify that the information provided is accurate and agree that Baysun may contact me about employment opportunities.</span></label></fieldset>
-<button class="button button--dark" type="submit">Submit application <span>→</span></button><p class="form__note">Before launch, replace the placeholder endpoint with Formspree, Netlify Forms, or a serverless API connected to your recruiting workflow.</p>
+<section class="section section--soft" id="apply"><div class="shell application"><div class="application__intro reveal"><div class="eyebrow"><span></span> Application</div><h2>Driver application</h2><p>Complete the short application below. Submissions are delivered directly to Baysun for review. Do not submit Social Security numbers, medical records, or other highly sensitive documents through this form.</p><div class="application__steps"><span class="is-current">1 Contact</span><span>2 Experience</span><span>3 Eligibility</span><span>4 Availability</span></div></div>
+<form class="form form--application reveal" data-form="driver" action="https://formsubmit.co/dispatch@baysunllc.com" method="POST">
+<input type="hidden" name="_subject" value="New Baysun Driver Application">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="https://baysunllc.com/application-success.html">
+<input type="hidden" name="_url" value="https://baysunllc.com/careers.html">
+<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+<fieldset>
+  <legend>Contact information</legend>
+  <label>Full Name
+    <input name="Full Name" autocomplete="name" required>
+  </label>
+  <div class="form__row">
+    <label>Phone Number
+      <input type="tel" name="Phone Number" autocomplete="tel" required>
+    </label>
+    <label>Email Address
+      <input type="email" name="Email Address" autocomplete="email" required>
+    </label>
+  </div>
+  <label>Current City &amp; State
+    <input name="Current City & State" autocomplete="address-level2" placeholder="Charlotte, NC" required>
+  </label>
+</fieldset>
+
+<fieldset>
+  <legend>Driving experience</legend>
+  <div class="form__row">
+    <label>How many years of CDL Class A experience do you have?
+      <select name="CDL Class A Experience" required>
+        <option value="">Select</option>
+        <option>Less than 1 year</option>
+        <option>1–2 years</option>
+        <option>2–3 years</option>
+        <option>3–5 years</option>
+        <option>5+ years</option>
+      </select>
+    </label>
+    <label>How many years of OTR experience do you have?
+      <select name="OTR Experience" required>
+        <option value="">Select</option>
+        <option>Less than 1 year</option>
+        <option>1–2 years</option>
+        <option>2–3 years</option>
+        <option>3–5 years</option>
+        <option>5+ years</option>
+      </select>
+    </label>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>Driver eligibility</legend>
+  <div class="form__row">
+    <label>Do you have a clean MVR?
+      <select name="Clean MVR" required>
+        <option value="">Select</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </label>
+    <label>Are you currently in a SAP program?
+      <select name="Currently in SAP Program" required>
+        <option value="">Select</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </label>
+  </div>
+  <label>Are you legally authorized to work in the United States?
+    <select name="Authorized to Work in U.S." required>
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+  </label>
+</fieldset>
+
+<fieldset>
+  <legend>Availability &amp; driving preference</legend>
+  <div class="form__row">
+    <label>How many miles are you comfortable running per week?
+      <select name="Preferred Weekly Mileage" required>
+        <option value="">Select</option>
+        <option>3,000–4,000</option>
+        <option>4,000–5,000</option>
+        <option>5,000+</option>
+      </select>
+    </label>
+    <label>When can you start?
+      <select name="Start Availability" required>
+        <option value="">Select</option>
+        <option>Immediately</option>
+        <option>Within 1 week</option>
+        <option>1–2 weeks</option>
+        <option>Other</option>
+      </select>
+    </label>
+  </div>
+
+  <label>If you selected Other, when would you be available?
+    <input name="Other Start Availability" placeholder="Optional">
+  </label>
+
+  <label>Anything else you'd like our recruiting team to know?
+    <textarea name="Additional Information" rows="4" placeholder="Optional — endorsements, home-time needs, equipment experience, questions, or anything else relevant."></textarea>
+  </label>
+
+  <label class="checkbox">
+    <input type="checkbox" name="Applicant Consent" value="Agreed" required>
+    <span>I certify that the information provided is accurate and authorize Baysun LLC to contact me regarding employment opportunities. I have reviewed the <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+  </label>
+</fieldset>
+
+<button class="button button--dark" type="submit">Submit application <span>→</span></button>
+<p class="form__note">Your application will be sent directly to Baysun's recruiting inbox. Do not submit Social Security numbers, medical records, or other sensitive documents through this form.</p>
 </form></div></section>
 </main>
 <footer class="footer"><div class="shell footer__bottom"><span>© <span data-year></span> Baysun LLC</span><span><a href="privacy.html">Privacy Policy</a> · <a href="privacy.html#sms-terms">SMS Terms</a> · <a href="index.html">Company site →</a></span></div></footer><script src="app.js"></script></body></html>
