@@ -573,6 +573,7 @@ p {
   font-weight: 800;
   color: #fff;
   letter-spacing: var(--tracking-snug);
+  font-variant-numeric: tabular-nums;
 }
 
 .hero__stats span {
@@ -612,6 +613,7 @@ p {
 .cards {
   display: grid;
   gap: 1.5rem;
+  perspective: 1400px;
 }
 
 .cards--3 {
@@ -632,11 +634,12 @@ p {
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
-  transition: transform var(--fast), box-shadow var(--fast), border-color var(--fast);
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow var(--fast), border-color var(--fast);
 }
 
 .card:hover {
-  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
   border-color: rgba(107, 100, 160, 0.35);
 }
@@ -746,9 +749,14 @@ p {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(10, 37, 64, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(28, 26, 48, 0.08) 1px, transparent 1px);
   background-size: 26px 26px;
 }
+
+/* Routes and cities are fully visible by default (the var() fallbacks are
+   1) — JS only dials --draw / --pop down to 0 right before it animates an
+   element in, and only for elements it can guarantee will be revealed. If
+   JS never runs, the map still renders complete and static. */
 
 .route {
   position: absolute;
@@ -756,27 +764,30 @@ p {
   border-radius: 999px;
   background: linear-gradient(90deg, rgba(107, 100, 160, 0.05), rgba(107, 100, 160, 0.65), rgba(107, 100, 160, 0.05));
   transform-origin: left center;
+  transform: rotate(var(--rot, 0deg)) scaleX(var(--draw, 1));
+  opacity: var(--draw, 1);
+  transition: transform 1s var(--ease), opacity 0.6s ease;
 }
 
 .route--a {
   width: 62%;
   top: 32%;
   left: 12%;
-  transform: rotate(6deg);
+  --rot: 6deg;
 }
 
 .route--b {
   width: 48%;
   top: 58%;
   left: 20%;
-  transform: rotate(-8deg);
+  --rot: -8deg;
 }
 
 .route--c {
   width: 40%;
   top: 74%;
   left: 8%;
-  transform: rotate(3deg);
+  --rot: 3deg;
 }
 
 .city {
@@ -785,6 +796,10 @@ p {
   font-weight: 700;
   color: var(--ink-900);
   padding-left: 1rem;
+  transform: scale(var(--pop, 1));
+  opacity: var(--pop, 1);
+  transform-origin: left center;
+  transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
 }
 
 .city::before {
@@ -805,6 +820,13 @@ p {
 .city--dallas { top: 62%; left: 16%; }
 .city--nyc { top: 20%; left: 74%; }
 .city--la { top: 76%; left: 52%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .route,
+  .city {
+    transition: none;
+  }
+}
 
 /* ==========================================================================
    Proof / safety grid
@@ -838,6 +860,7 @@ p {
   font-weight: 800;
   color: var(--ink-900);
   letter-spacing: var(--tracking-snug);
+  font-variant-numeric: tabular-nums;
 }
 
 .proof p {
@@ -1479,6 +1502,37 @@ p {
 
 @media (prefers-reduced-motion: reduce) {
   .reveal.reveal-pending {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---- Staggered children (cards, proof tiles, hero stats) ----
+   Same safety contract as .reveal: visible by default, JS only hides an
+   item right before it's guaranteed to bring it back, and each item's
+   transition-delay comes from a --stagger-delay custom property JS sets
+   inline — no default means no delay, so nothing waits on a value that
+   might never arrive. */
+.stagger-item {
+  opacity: 1;
+  transform: none;
+}
+
+.stagger-item.stagger-pending {
+  opacity: 0;
+  transform: translateY(20px) scale(0.97);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+  transition-delay: var(--stagger-delay, 0s);
+}
+
+.stagger-item.stagger-pending.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stagger-item.stagger-pending {
     opacity: 1;
     transform: none;
     transition: none;
