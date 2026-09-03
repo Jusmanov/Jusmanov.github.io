@@ -116,7 +116,12 @@
     <section class="section" id="quote">
       <div class="shell quote reveal">
         <div class="quote__copy"><div class="eyebrow"><span></span> Ship with Baysun</div><h2>Tell us what needs to move.</h2><p>Send the lane, freight type, weight, dates, and any special handling details. Dispatch can respond with availability and next steps.</p></div>
-        <form class="form" data-form="quote" action="https://formspree.io/f/REPLACE_ME" method="POST">
+        <form class="form" data-form="quote" action="https://formsubmit.co/dispatch@baysunllc.com" method="POST">
+          <input type="hidden" name="_subject" value="New Baysun Shipping Quote Request">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://baysunllc.com/quote-success.html">
+          <input type="hidden" name="_url" value="https://baysunllc.com/index.html#quote">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <input type="hidden" name="form_type" value="shipping_quote">
           <label>Full name<input name="name" autocomplete="name" required></label>
           <label>Work email<input type="email" name="email" autocomplete="email" required></label>
@@ -124,7 +129,7 @@
           <div class="form__row"><label>Origin<input name="origin" placeholder="City, State" required></label><label>Destination<input name="destination" placeholder="City, State" required></label></div>
           <label>Shipment details<textarea name="details" rows="5" placeholder="Commodity, weight, pickup date, delivery requirements…" required></textarea></label>
           <button class="button button--dark" type="submit">Request a quote <span>→</span></button>
-          <p class="form__note">Form endpoint is intentionally marked <code>REPLACE_ME</code> until you connect Formspree or a serverless backend.</p>
+          <p class="form__note">Your request will be sent directly to Baysun dispatch. Please include enough shipment detail for the team to evaluate availability.</p>
         </form>
       </div>
     </section>
