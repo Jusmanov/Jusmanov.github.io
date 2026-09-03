@@ -79,10 +79,126 @@
             <div><span>Deliveries</span><strong>1,000+ completed nationally</strong></div>
           </div>
         </div>
-        <div class="network__visual" aria-hidden="true">
-          <div class="route route--a"></div><div class="route route--b"></div><div class="route route--c"></div>
-          <span class="city city--charlotte">Charlotte</span><span class="city city--chicago">Chicago</span><span class="city city--dallas">Dallas</span><span class="city city--nyc">New York</span><span class="city city--la">Los Angeles</span>
-        </div>
+       <div class="network__visual network-map" aria-label="Baysun national freight network">
+
+  <div class="network-map__header">
+    <div>
+      <span class="network-map__label">National coverage</span>
+      <strong>Charlotte → Continental U.S.</strong>
+    </div>
+
+    <div class="network-map__coverage">
+      <strong>48</strong>
+      <span>contiguous states</span>
+    </div>
+  </div>
+
+  <div class="network-map__canvas">
+
+    <svg
+      class="network-map__routes"
+      viewBox="0 0 720 390"
+      preserveAspectRatio="xMidYMid meet"
+      aria-hidden="true"
+    >
+
+      <!-- Charlotte → Northeast -->
+      <path
+        class="network-path network-path--1"
+        d="M245 205 C360 135, 455 105, 590 92"
+      />
+
+      <!-- Charlotte → Midwest -->
+      <path
+        class="network-path network-path--2"
+        d="M245 205 C310 150, 345 115, 395 82"
+      />
+
+      <!-- Charlotte → South Central -->
+      <path
+        class="network-path network-path--3"
+        d="M245 205 C315 230, 360 270, 410 305"
+      />
+
+      <!-- Charlotte → West -->
+      <path
+        class="network-path network-path--4"
+        d="M245 205 C360 210, 475 235, 625 275"
+      />
+
+      <!-- moving freight indicator -->
+      <circle class="network-shipment" r="5">
+        <animateMotion
+          dur="6s"
+          repeatCount="indefinite"
+          path="M245 205 C360 135, 455 105, 590 92"
+        />
+      </circle>
+
+    </svg>
+
+    <!-- Charlotte hub -->
+
+    <div class="network-hub">
+      <div class="network-hub__pulse"></div>
+
+      <div class="network-hub__content">
+        <span>HQ</span>
+        <strong>Charlotte</strong>
+        <small>North Carolina</small>
+      </div>
+    </div>
+
+    <!-- Regional destinations -->
+
+    <div class="network-region network-region--northeast">
+      <span class="network-region__dot"></span>
+      <div>
+        <small>Corridor 01</small>
+        <strong>Northeast</strong>
+        <span>NY · PA · NJ · New England</span>
+      </div>
+    </div>
+
+    <div class="network-region network-region--midwest">
+      <span class="network-region__dot"></span>
+      <div>
+        <small>Corridor 02</small>
+        <strong>Midwest</strong>
+        <span>IL · OH · IN · MI</span>
+      </div>
+    </div>
+
+    <div class="network-region network-region--south">
+      <span class="network-region__dot"></span>
+      <div>
+        <small>Corridor 03</small>
+        <strong>South Central</strong>
+        <span>TX · TN · AR · OK</span>
+      </div>
+    </div>
+
+    <div class="network-region network-region--west">
+      <span class="network-region__dot"></span>
+      <div>
+        <small>Corridor 04</small>
+        <strong>Western U.S.</strong>
+        <span>Long-haul interstate coverage</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="network-map__footer">
+    <span>
+      <i></i>
+      Interstate FTL network
+    </span>
+
+    <span>Charlotte-based dispatch</span>
+  </div>
+
+</div>
       </div>
     </section>
 
