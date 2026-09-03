@@ -760,68 +760,430 @@ p {
    element in, and only for elements it can guarantee will be revealed. If
    JS never runs, the map still renders complete and static. */
 
-.route {
-  position: absolute;
-  height: 2px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, rgba(107, 100, 160, 0.05), rgba(107, 100, 160, 0.65), rgba(107, 100, 160, 0.05));
-  transform-origin: left center;
-  transform: rotate(var(--rot, 0deg)) scaleX(var(--draw, 1));
-  opacity: var(--draw, 1);
-  transition: transform 1s var(--ease), opacity 0.6s ease;
+/* ==========================================================================
+   National freight network visual
+   ========================================================================== */
+
+.network-map {
+  position: relative;
+  aspect-ratio: auto;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  background:
+    linear-gradient(
+      180deg,
+      var(--surface-1) 0%,
+      var(--surface-2) 100%
+    );
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(40, 36, 74, 0.08);
 }
 
-.route--a {
-  width: 62%;
-  top: 32%;
-  left: 12%;
-  --rot: 6deg;
-}
-
-.route--b {
-  width: 48%;
-  top: 58%;
-  left: 20%;
-  --rot: -8deg;
-}
-
-.route--c {
-  width: 40%;
-  top: 74%;
-  left: 8%;
-  --rot: 3deg;
-}
-
-.city {
-  position: absolute;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--ink-900);
-  padding-left: 1rem;
-  transform: scale(var(--pop, 1));
-  opacity: var(--pop, 1);
-  transform-origin: left center;
-  transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
-}
-
-.city::before {
+.network-map::before {
   content: "";
   position: absolute;
-  left: 0;
-  top: 50%;
-  width: 8px;
-  height: 8px;
-  margin-top: -4px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 5px rgba(107, 100, 160, 0.18);
+  inset: 0;
+
+  background-image:
+    radial-gradient(
+      rgba(28, 26, 48, 0.09) 1px,
+      transparent 1px
+    );
+
+  background-size: 28px 28px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      #000 15%,
+      #000 85%,
+      transparent
+    );
+
+  pointer-events: none;
 }
 
-.city--charlotte { top: 30%; left: 10%; }
-.city--chicago { top: 12%; left: 46%; }
-.city--dallas { top: 62%; left: 16%; }
-.city--nyc { top: 20%; left: 74%; }
-.city--la { top: 76%; left: 52%; }
+
+/* Header */
+
+.network-map__header {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  padding: 1.6rem 1.75rem;
+
+  border-bottom: 1px solid rgba(28, 26, 48, 0.08);
+
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(10px);
+}
+
+.network-map__header > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.network-map__label {
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  color: var(--accent);
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.network-map__header strong {
+  font-size: 0.95rem;
+  color: var(--ink-900);
+}
+
+
+/* Coverage number */
+
+.network-map__coverage {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.network-map__coverage strong {
+  font-size: 1.6rem;
+  color: var(--ink-900);
+}
+
+.network-map__coverage span {
+  font-size: 0.7rem;
+  color: var(--ink-400);
+}
+
+
+/* Canvas */
+
+.network-map__canvas {
+  position: relative;
+  flex: 1;
+  min-height: 390px;
+}
+
+
+/* SVG routes */
+
+.network-map__routes {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+  pointer-events: none;
+}
+
+.network-path {
+  fill: none;
+
+  stroke: rgba(107, 100, 160, 0.35);
+  stroke-width: 2;
+
+  stroke-linecap: round;
+
+  stroke-dasharray: 8 7;
+
+  vector-effect: non-scaling-stroke;
+
+  opacity: 0.8;
+}
+
+.network-path--1 {
+  stroke: rgba(107, 100, 160, 0.6);
+}
+
+.network-path--2 {
+  stroke: rgba(92, 127, 160, 0.48);
+}
+
+.network-path--3 {
+  stroke: rgba(201, 154, 91, 0.45);
+}
+
+.network-path--4 {
+  stroke: rgba(107, 100, 160, 0.4);
+}
+
+
+/* Animated shipment */
+
+.network-shipment {
+  fill: var(--accent);
+
+  filter:
+    drop-shadow(
+      0 0 5px rgba(107, 100, 160, 0.6)
+    );
+}
+
+
+/* Charlotte hub */
+
+.network-hub {
+  position: absolute;
+
+  left: 25%;
+  top: 52%;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 4;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.network-hub__pulse {
+  position: absolute;
+
+  width: 76px;
+  height: 76px;
+
+  border-radius: 50%;
+
+  background: rgba(107, 100, 160, 0.08);
+
+  border: 1px solid rgba(107, 100, 160, 0.18);
+
+  animation: hub-pulse 3s ease-in-out infinite;
+}
+
+.network-hub__content {
+  position: relative;
+
+  width: 56px;
+  height: 56px;
+
+  border-radius: 50%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--dark-900);
+
+  box-shadow:
+    0 10px 25px rgba(28, 26, 48, 0.2);
+
+  color: #fff;
+}
+
+.network-hub__content span {
+  font-size: 0.52rem;
+
+  color: #aca7d4;
+
+  letter-spacing: 0.08em;
+}
+
+.network-hub__content strong {
+  font-size: 0.65rem;
+}
+
+.network-hub__content small {
+  display: none;
+}
+
+@keyframes hub-pulse {
+
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+
+}
+
+
+/* Regional nodes */
+
+.network-region {
+  position: absolute;
+
+  z-index: 3;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 0.65rem;
+
+  padding: 0.7rem 0.85rem;
+
+  min-width: 135px;
+
+  background: rgba(255, 255, 255, 0.76);
+
+  border: 1px solid rgba(28, 26, 48, 0.09);
+
+  border-radius: 10px;
+
+  backdrop-filter: blur(8px);
+
+  box-shadow:
+    0 8px 22px rgba(40, 36, 74, 0.06);
+}
+
+.network-region__dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  margin-top: 5px;
+
+  background: var(--accent);
+
+  box-shadow:
+    0 0 0 4px rgba(107, 100, 160, 0.14);
+
+  flex-shrink: 0;
+}
+
+.network-region > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.network-region small {
+  font-size: 0.55rem;
+
+  color: var(--ink-300);
+
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.network-region strong {
+  margin-top: 1px;
+
+  font-size: 0.78rem;
+
+  color: var(--ink-900);
+}
+
+.network-region > div > span {
+  margin-top: 1px;
+
+  font-size: 0.58rem;
+
+  color: var(--ink-400);
+}
+
+
+/* Node positions */
+
+.network-region--northeast {
+  right: 6%;
+  top: 11%;
+}
+
+.network-region--midwest {
+  left: 50%;
+  top: 5%;
+}
+
+.network-region--south {
+  left: 49%;
+  bottom: 7%;
+}
+
+.network-region--west {
+  right: 3%;
+  bottom: 13%;
+}
+
+
+/* Footer */
+
+.network-map__footer {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0.85rem 1.6rem;
+
+  border-top: 1px solid rgba(28, 26, 48, 0.08);
+
+  font-size: 0.65rem;
+
+  color: var(--ink-400);
+
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.network-map__footer span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.network-map__footer i {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--accent);
+}
+
+
+/* Mobile */
+
+@media (max-width: 620px) {
+
+  .network-map {
+    min-height: 560px;
+  }
+
+  .network-map__coverage span {
+    display: none;
+  }
+
+  .network-region {
+    min-width: 115px;
+    padding: 0.6rem;
+  }
+
+  .network-region--northeast {
+    right: 3%;
+  }
+
+  .network-region--midwest {
+    left: 45%;
+  }
+
+  .network-region--south {
+    left: 40%;
+  }
+
+}
 
 @media (prefers-reduced-motion: reduce) {
   .route,
